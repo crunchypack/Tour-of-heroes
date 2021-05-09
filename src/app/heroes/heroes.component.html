@@ -5,13 +5,5 @@
     <span class="badge" >{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>
-<!--If statement, Angular directive-->
-<div *ngIf="selectedHero">
-  <!-- Using uppercase pipe-->
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
-  <div><span>id:</span> {{ selectedHero.id }}</div>
-  <div>
-    <label for="hero-name"> Hero name: </label>
-    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-  </div>
-</div>
+<!-- HeroDetailComponent selector with Angular property binding-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
