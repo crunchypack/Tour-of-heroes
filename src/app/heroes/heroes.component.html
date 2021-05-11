@@ -1,9 +1,23 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <!--ngFor directive for displaying lists. classbinding css selector [class.some-css-class]="some-condition"-->
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+  </li>
+</ul>
+
+
+
+
+
+
+
+<!-- <ul class="heroes">
+  ngFor directive for displaying lists. classbinding css selector [class.some-css-class]="some-condition"
   <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
     <span class="badge" >{{hero.id}}</span> {{hero.name}}
   </li>
-</ul>
+</ul> -->
 <!-- HeroDetailComponent selector with Angular property binding-->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
