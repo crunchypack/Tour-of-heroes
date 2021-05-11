@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
+import { MessageService } from './message.service';
 
 @Injectable({ // Class participates in dependency injection system
   providedIn: 'root' // Metadata object
@@ -10,10 +11,16 @@ import { HEROES } from './mock-heroes';
 })
 export class HeroService {
 
+  /**
+   * Uses Rxjs of() 
+   * @returns Observable of heroes
+   */
   getHeroes(): Observable<Hero[]>{
     const heroes = of(HEROES);
-  return heroes;
+    this.messageService.add('HeroService: fetched heroes');
+    return heroes;
   }
 
-  constructor() { }
+  //Injects the MessageService
+  constructor(private messageService: MessageService) { }
 }
