@@ -24,6 +24,29 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
     .subscribe(heroes => this.heroes = heroes);
   }
+
+  /**
+   * Adds new hero
+   * @param name Hero name
+   * 
+   */
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+  /**
+   * Deletes hero
+   * @param Hero
+   */
+   delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
+  /*If you neglect to subscribe(), the service will not send the delete request to the server. As a rule, an Observable does nothing until something subscribes.*/
 }
 // export class HeroesComponent implements OnInit {
 //  // heroes = HEROES; // Component property
